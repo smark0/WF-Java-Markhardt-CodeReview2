@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class main {
+    public static String choice1;
+    public static String choice2;
     private static Workout[] workouts = {
             new Workout("Push-Ups", "Place your hands on the floor. " +
                     "Raise up onto your toes so that all of your body weight is on your hands and your feet. " +
@@ -25,17 +29,49 @@ public class main {
         System.out.println("--------------------------------");
         System.out.println("Welcome to the Workout Database!");
         System.out.println("--------------------------------");
+        System.out.println("Please choose which workout you want.");
+        System.out.println("Enter 1 for the floor workout");
+        System.out.println("Enter 2 for the standup workout");
+        System.out.println("Enter 3 for the complete workout");
+        Scanner inp1 = new Scanner(System.in);
+        System.out.println("Please enter a number:");
+        choice1 = inp1.nextLine();
         showWorkouts();
-        Workout[] intervalWorkout = {workouts[0],workouts[1],workouts[2]};
-        IntervalWorkout iWorkout = new IntervalWorkout(intervalWorkout,5,45);
-        iWorkout.createInterval();
-
+        Scanner inp2 = new Scanner(System.in);
+        System.out.println(" ");
+        System.out.println("Do you want to finish off with an Interval workout? (y/n)");
+        choice2 = inp2.nextLine();
+        if(choice2.equals("y") || choice2.equals("Y")){
+            Workout[] intervalWorkout = {workouts[0],workouts[1],workouts[2]};
+            IntervalWorkout iWorkout = new IntervalWorkout(intervalWorkout,5,45);
+            iWorkout.createInterval();
+            System.out.println("Thank you for using the Workout Database.");
+        }
+        else
+            System.out.println("Thank you for using the Workout Database.");
 
     }
 
-    public static void showWorkouts() {
-        for (Workout workout : workouts) {
-            System.out.println(workout);
+    private static void showWorkouts() {
+        switch (choice1) {
+            case "1":
+                System.out.println(workouts[0]);
+                System.out.println(workouts[1]);
+                System.out.println(workouts[3]);
+                break;
+            case "2":
+                System.out.println(workouts[2]);
+                System.out.println(workouts[4]);
+                System.out.println(workouts[5]);
+                break;
+            case "3":
+                for (Workout workout : workouts) {
+                    System.out.println(workout);
+                }
+                break;
+            default:
+                System.out.println("Invalid option, first workout will be skipped.");
+                break;
         }
     }
 }

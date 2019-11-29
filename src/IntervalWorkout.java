@@ -21,7 +21,7 @@ public class IntervalWorkout {
             System.out.println("============================");
             System.out.println("Round " + i + " : ");
 
-            for (Workout workout : workouts) // reminder: do not use curlies
+            for (Workout workout : workouts)
                 System.out.println(workout.getExercise());
 
             if (i < reps) {
